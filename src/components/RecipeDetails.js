@@ -133,17 +133,40 @@ function RecipeDetails() {
             data-testid="recipe-photo"
             width="400px"
           />
-          <p data-testid="recipe-title">{ recipe.strDrink }</p>
-          <p data-testid="recipe-category">{ recipe.strAlcoholic }</p>
-          { ingredientsFilter[0].filter((ingredient) => ingredient !== null
-          && ingredient.length !== 0).map((ingredient, index) => (
-            <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-              { ingredient }
-              {' '}
-              { recipe[`strMeasure${index + 1}`] }
-            </p>)) }
-          <p data-testid="instructions">{ recipe.strInstructions }</p>
-          <div>
+          <p
+            data-testid="recipe-title"
+            className="first-p-class"
+          >
+            { recipe.strDrink }
+          </p>
+          <p
+            data-testid="recipe-category"
+            className="recipe-category-class"
+          >
+            { recipe.strAlcoholic }
+
+          </p>
+          <div className="ingredients-card">
+            { ingredientsFilter[0].filter((ingredient) => ingredient !== null
+            && ingredient.length !== 0).map((ingredient, index) => (
+              <p
+                key={ index }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                -
+                {' '}
+                { ingredient }
+                {' '}
+                { recipe[`strMeasure${index + 1}`] }
+              </p>)) }
+          </div>
+          <p
+            className="ingredients-card"
+            data-testid="instructions"
+          >
+            { recipe.strInstructions }
+          </p>
+          <div className="icons-class">
             <button type="button" onClick={ () => handleShare(window.location.href) }>
               <img src={ shareIcon } alt="share button" data-testid="share-btn" />
             </button>
